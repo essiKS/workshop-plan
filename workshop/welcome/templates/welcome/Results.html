@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Django if sentences
+{% endblock %}
+
+{% block content %}
+
+<!-- Task 8: if sentences in Django
+Make this page such that it shows different content depending on the reported age.
+Use the django's if sentence and then a mathematical expression for the variable player.age
+Then you can use and else sentence for alternative content, in case the condition is not satisfied.
+To close the if sentence, use the command endif
+-->
+    {% if 20 >= 18 %}
+        Math is true.
+    {% else %}
+        Logic fails.
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
+
+

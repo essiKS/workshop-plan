@@ -1,0 +1,140 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+    {% comment %}
+    This document, also called html template, defines your first webpage.
+    (The order of the pages is defined in pages.py python file.)
+    Any commands with curly brackets and percentage signs are in Django.
+    Html elements are in <> "brackets".
+    Otherwise this document can support also scripts, f.ex. JavaScript.
+    Django and the html code can do a lot of similar things - Django essentially simplifies html.
+
+    While modifying this document, you can have your server running.
+    By refreshing the page on your browser (F5), you can see how the website's design changes.
+    {% endcomment %}
+
+{% block title %}
+
+    <!-- Task 1: Give a title "Hello world!" using the 'block title' -element -->
+
+{% endblock %}
+
+{% block content %}
+     <!-- Task 2: give a subtitle "Basic html" to the contents using html elements h1-h6,
+     and then change the text in p to what ever you want or to the following:
+
+      "Html code is inside the brackets <>. The the different html elements can be
+      modified for example in size and colour. <b>Use b elements to create bold text</b>. The <br> element
+      stands for a (line) break." -->
+
+    <p style="margin: 10px 0 10px 0"> Lorem ipsum dolor sit amet, ex denique laboramus concludaturque duo.
+        Nam ea appareat tincidunt, option euismod constituam et mea.
+        Modus disputando ad usu, in pri nominati corrumpit.
+        Eripuit postulant vim cu, pri inermis adipiscing ea.
+        No autem tincidunt qui. Mel ea facete adversarium intellegebat, primis urbanitas vis ei. </p>
+
+
+    <!-- Task 3: Make the text red, using the style feature of the p. You can separate different style elements
+     with a ;. PyCharm will help you choose from the colour commands readily available.-->
+
+    <h3>Picture </h3>
+
+    <!-- Task 4: Picture. The picture is stored in the _static folder in the workshop directory, under the welcome
+     folder. Change the size of the picture so that it fits the page better.-->
+
+    <img src="{% static "welcome/EUI.png" %}" style="width:5cm;height:600px;"/>
+
+    <h3> Additional information </h3>
+
+    <!-- Task 5: Additional information. You can include other html files using the include Django command and
+    adding the appropriate address of the file.
+
+    Add inside the div-tag the following Django command: include "welcome/MyPageSubpage.html"
+    (Remember to use the curly brackets and percentage signs) -->
+
+    <div class="card" style="background-color:lightblue">
+
+    </div>
+
+    <h3>Table</h3>
+    <!-- Task 5: Tables: Add another line to the table. You are free to choose the information to be added.-->
+
+    <table style="width:100%">
+  <tr>
+    <th>Language</th>
+    <th>Marker</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>Django</td>
+    <td>Start with "{"+"%"  and end with "%"+"}"</td>
+    <td>?</td>
+  </tr>
+  <tr>
+    <td>HTML5</td>
+      <td>Start with "<" ">" and end with "<"+"/" ">" </td>
+    <td>?</td>
+  </tr>
+</table>
+
+    <h3>Forms </h3>
+    <!-- Task 6: Form fields: the following input box asks for age.  -->
+    <div>
+        <h4>How old are you?</h4>
+    {% formfield player.age %}
+    </div>
+
+    <h3>Buttons</h3>
+    <!-- Task 7: Next button:
+    You can submit the page by pressing enter, but you can also create a button "next" that submits the page and
+    moves to the next one.
+
+    Add a "next" button with the shorthand Django command next_button, with the curly brackets and % signs.
+
+    If you press the next button or enter on your keyboard after providing an answer, you will exit this page.
+    To return back to this page, you must start a new session in the oTree internet user interface.
+
+    Notice that age is a required field, you cannot exit without providing an answer.-->
+
+    <!--Task 8: Custom next button:
+    Django and oTree offer a lot of shortcuts for doing things. These shortcuts are however all made out of html code
+    and can be made out of scratch or customized. This is useful for example when not using the default language of
+    English.
+
+    The button below is disabled. You can activate it by removing the disabled attribute.
+
+    You can make it into a basic otree button with custom text by adding the class attribute:
+        class = "otree-btn-next btn btn-primary next-button otree-next-button"
+
+
+    The button text inside can be customized to whichever language you want it to be in.-->
+
+       <button disabled class="">Successivo</button>
+
+    <!-- Task 9 can be found in the second page of the page sequence, in Results.html.-->
+
+{% endblock %}
+
+{% block style %}
+
+    <!-- Besides changing the style of individual items, you can change the style of the entire page, app or the
+    whole app family, depending where you place the style code. Here, you can modify the entire class or html element.
+    See the examples below and play around!
+
+    More information can be found in https://otree.readthedocs.io/en/latest/templates.html
+    -->
+
+    .otree-title {
+        background-color: steelblue;
+        color: white;
+        margin: 10px 0 10px 0;
+        padding: 20px;
+    }
+    p {
+        margin-left: 10px;
+    }
+
+    b {
+        color: darkred;
+    }
+{%  endblock %}
