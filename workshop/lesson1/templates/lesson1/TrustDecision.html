@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Trust decision
+{% endblock %}
+
+{% block content %}
+    <p> You have an endowment of {{ Constants.endowment }} points.</p>
+
+    <p> How many points do you send to the trustee? </p>
+
+    {% formfield group.trust %}
+
+    {% next_button %}
+{% endblock %}

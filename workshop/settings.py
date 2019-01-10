@@ -18,6 +18,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['welcome'],
     },
+    {
+        'name': 'lesson_one',
+        'display_name': "Trust game tutorial",
+        'num_demo_participants': 2,
+        'app_sequence': ['lesson1'],
+    },
 ]
 
 
