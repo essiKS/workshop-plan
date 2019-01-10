@@ -1,6 +1,3 @@
-# This is the file that defines the tables of your data set and the columns in each table and important parameters.
-
-
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
@@ -15,7 +12,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'welcome'
+    name_in_url = 'lesson1'
     players_per_group = None
     num_rounds = 1
 
@@ -29,6 +26,4 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    age = models.IntegerField()
-    name = models.StringField()
-
+    pass

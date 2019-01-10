@@ -5,7 +5,7 @@ from .models import Constants
 
 class MyPage(Page):
     form_model = 'player'
-    form_fields = ['age']
+    form_fields = ['age', 'name']
 
 
 class ResultsWaitPage(WaitPage):
