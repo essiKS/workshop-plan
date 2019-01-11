@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    <span id = demo> Hey! </span>
+{% endblock %}
+
+{% block content %}
+
+
+    <button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+
+    <button type="button" onclick='document.getElementById("demo").innerHTML = "Hey!"'>Click Me!</button>
+
+    <p id="demo2">JavaScript can change the style of an HTML element.</p>
+
+    <button type="button" onclick="document.getElementById('demo2').style.fontSize='35px'">Click Me!</button>
+    <button type="button" onclick="document.getElementById('demo2').style.fontSize='16px'">Click Me!</button>
+
+{% endblock %}
+
+{% block script %}
+
+
+
+{% endblock %}
