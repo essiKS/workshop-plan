@@ -13,30 +13,29 @@ from .models import Constants
 # Each page has a corresponding html template under the templates/lesson1 folder
 # (lesson1 is the app name)
 
-# Wait pages (a separate class) make sure the members of a group access a page all at the same time
+# Wait pages (a separate class) make sure the members of a group access the next page all at the same time
 
-# For this exercise, you create a two player game where the two players have two roles:
+# For this exercise, you are creating a two player game where the two players have two roles:
 # Trustee and Trustor
 # At first, the two players receive common instructions.
 # This is followed by the trustor deciding how much to trust,
 # After which the trustee decides how much to return back.
 
-# The model is readily set in  the models.py.
+# The model is readily set in the models.py.
 # The game has 2 players of different types, form fields for trust decision and reciprocity decision,
-# some useful variables and functions for calculating the payoffs
+# some useful variables and functions for calculating the payoffs.
 
-# Remember it's good coding practise to just copy paste functioning code from elsewhere (protects against typos)
+# It's good coding practise to just copy paste functioning code from elsewhere (protects against typos)
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-# Task 1: Create the first page od instructions shown to all participants called "Instructions"
+# Task 1: Create the first page of instructions shown to all participants called "Instructions"
 
 # 1. Create a class Instructions that inherits from the generic oTree Page
-# 2. You find a corresponding Instructions.html file in the templates/lesson1 directory
+# 2. You find a corresponding Instructions.html file ready in the templates/lesson1 directory
 # 3. Add Instructions first on the page sequence in the bottom of this file.
 
 # In doing the page, you should replace the lines for the default page "MyPage" here and in the page sequence.
-# You can also delete the MyPage html or refactor and rename it for the next task.
 
 
 class MyPage(Page):
@@ -59,7 +58,7 @@ class TrustDecision(Page):
 # TIP: The pages for the trustor's decision is ready made, called TrustDecision.
 # You can see it above and use it as a relevant example to copy paste from. Do not replace it.
 
-# 1. Create class called ReciprocityDecision inheriting from the oTree Page
+# 1. Create a class called ReciprocityDecision inheriting from the oTree Page
 # 2. Use the 'is_displayed' function to limit access to this page to only trustees
 # 3. Add a formfield for 'reciprocity' under the 'group' form model
 # 4. Add a template variable for the multiplied points by using the vars_for_template(self) function:
@@ -72,11 +71,11 @@ class TrustDecision(Page):
 # ### Thus do the following:
 
 # 6. Create html page called ReciprocityDecision in the templates/lesson1 folder
-# ### (right click the lesson1 folder, select new HTML file)
+# ### (right click the lesson1 folder, select a new HTML file)
 # 7. Add the required instructions (feel free to modify):
 # TIP: You can copy paste the usual Django functions from an existing html template, for example, TrustDecision
 # #### - title: "Reciprocity decision"
-# #### - results so far:    "A trustor has trusted {{ player.trust }} points to you.
+# #### - results so far:    "A trustor has trusted {{ group.trust }} points to you.
 #                           After multiplication, this amounts to {{ multiplied }} points."
 # #### - decision: "How many points do you send to the trustor out of these {{ multiplied }} points?
 # 8. Add the formfield group.reciprocity

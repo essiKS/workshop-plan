@@ -29,7 +29,7 @@ class Constants(BaseConstants):
 # Task 1: Set up the endowment and multiplication coefficient.
 # The endowment is 10 points and the multiplication coefficient is 2.
 # You can also add to the number of rounds.
-# Notice we need to also adjust the number of participants per group (3).
+# Notice, we need to also adjust the number of participants per group (3).
 # If you want, you can update the information on the Instructions.html so that the file directly reads these constants.
 
 # Task 2: Make a comprehension test for the players (under the player model).
@@ -40,7 +40,7 @@ class Constants(BaseConstants):
 # 1. Add the variables under the Player class:
 # - f. ex. (indented) maximum_contribution = models.PositiveIntegerField(
 #                                   label="What is the maximum contribution that a player can make?")
-# - you can fix the answers such that only correct answer will do, using the max and min functions inside the ()
+# - you can fix the answers such that only correct answer will do, using the max and min similar to label
 # 2. Add the appropriate form model and form fields under the instructions page in pages.py
 # - form_model = 'player'
 # - form_fields = ['maximum_contribution]
@@ -48,7 +48,7 @@ class Constants(BaseConstants):
 
 
 # Task 3: Make the decisions:
-# Each participant should make a decision how much to invest of the endowment.
+# Each participant should make a decision: how much of the endowment to invest.
 # Note that the 3 decisions are payoff relevant to all participants.
 # Furthermore, there are some limits to how much a person can invest. Use min or max to handle this.
 # 1. Add the variables under the Group class
@@ -78,12 +78,10 @@ class Constants(BaseConstants):
 #                p.payoff = Constants.endowment - self.contribution1 + \
 #                           2 * (self.contribution1 + self.contribution2 + self.contribution3)
 #            elif p.id_in_group == 2:
-#                etc.(continue to close all the possible cases....)
+#                etc - continue to close all the possible cases...
 
 # 2. Trigger the function by placing the line under the wait page, after all players arrive function
 # (indented) self.group.set_payoffs()
-
-
 #
 
 

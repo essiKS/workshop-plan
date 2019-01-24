@@ -32,8 +32,10 @@
 
     <button type="button" id='counter'>Count clicks</button>
 {# Task 4: Change the button "Count clicks" into a random integer generator #}
-{# The counter button triggers some bigger functions down below in the script part. #}
-{# TIP: Don't know how to generate random numbers or integers? Google it! #}
+{# The counter button triggers some bigger functions down below in the end of the script part. #}
+{# To do this task, you need to change this code below, for example, define the variable count as the random variable.#}
+
+{# TIP: Don't know how to generate random numbers or integers in JS? Try googling it! #}
 {# Notice that there is a different code for generating random numbers and generating random integers#}
 
 {% endblock %}
@@ -42,15 +44,16 @@
 
     <script>
     $(function () {
-        var $btn_answer = $("button#counter");
         var count = 0;
 {# This following function is triggered when the page is downloaded and ready #}
         $(document).ready(function(){
             document.getElementById('counts').innerHTML = count;
+            console.log("Document ready")
         });
 
 {# When the click of a button leads to multiple consequences, it is better to do a separate function. #}
-{# The function below is triggered when the counter button is clicked #}
+{# The function below is triggered when the "counter" button is clicked #}
+        var $btn_answer = $("button#counter");
         $btn_answer.on("click", function () {
             count = count + 1;
             document.getElementById('counts').innerHTML = count;
