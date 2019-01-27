@@ -38,10 +38,19 @@ from .models import Constants
 # In doing the page, you should replace the lines for the default page "MyPage" here and in the page sequence.
 
 
-class MyPage(Page):
+c
+
+class InstructionsPage(Page):
+    def is_displayed(self):
+        if self.round_number == 1:
+            return True
+
+
+class Instructions(InstructionsPage):
     pass
 
 # ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+
 
 
 class TrustDecision(Page):
@@ -52,6 +61,22 @@ class TrustDecision(Page):
     form_model = 'group'
     form_fields = ['trust']
 
+
+class ReciprocityDecision(Page):
+    def is_displayed(self):
+        if self.player.role() == "trustee":
+            return True
+
+    form_model = 'group'
+    form_fields = ['reciprocity']
+
+    def reciprocity_max(self):
+        multiplied_points = 3 * self.group.trust
+        return multiplied_points
+
+    def vars_for_template(self):
+        multiplied_points = 3 * self.group.trust
+        return {'multiplied': multiplied_points}
 
 # Task 2: Page for the trustee's decision
 
@@ -89,6 +114,11 @@ class TrustWaitPage(WaitPage):
         pass
 
 
+class ReciprocityWaitPage(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_payoffs()
+
+
 # Task 3: Wait page
 # While one of the players is making a decision, the other is waiting.
 # You can see an example of a wait page class above, for the first trust decision.
@@ -121,8 +151,10 @@ class Results(Page):
 
 
 page_sequence = [
-    MyPage,
+    Instructions,
     TrustDecision,
     TrustWaitPage,
+    ReciprocityDecision,
+    ReciprocityWaitPage,
     Results
 ]

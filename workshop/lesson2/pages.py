@@ -4,17 +4,25 @@ from .models import Constants
 
 
 class Instructions(Page):
-    pass
+    form_model = 'player'
+    form_fields = ['maximum_contribution']
 
 
 class Decision(Page):
-    pass
+    form_model = 'group'
+    def get_form_fields(self):
+        if self.player.id_in_group == 1:
+            return ['contribution1']
+        elif self.player.id_in_group == 2:
+            return ['contribution2']
+        elif self.player.id_in_group == 3:
+            return ['contribution3']
 
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        pass
+        self.group.set_payoffs()
 
 
 class Results(Page):

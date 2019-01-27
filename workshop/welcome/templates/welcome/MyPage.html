@@ -16,21 +16,24 @@
 
 {% block title %}
 
-    <!-- Task 1: Give a title "Hello world!" using the 'block title' -element -->
+    Hello world!
 
 {% endblock %}
 
 {% block content %}
-     <!-- Task 2: give a subtitle "Basic html" to the contents using html elements h1-h6,
+
+ <!-- Task 2: give a subtitle "Basic html" to the contents using html elements h1-h6,
      and then change the text in p to what ever you want or to the following:
 
       "Html code is inside the brackets <>. The the different html elements can be
       modified for example in size and colour. <b>Use b elements to create bold text</b>. The <br> element
       stands for a (line) break." -->
 
-    <p style="margin: 10px 0 10px 0"> Lorem ipsum dolor sit amet, ex denique laboramus concludaturque duo.
+    <h6> Basic html </h6>
+
+    <p style="margin: 10px 0 10px 0; color: red"> Lorem <span style="color: #90ff65 "> ipsum </span> dolor sit amet, ex denique laboramus concludaturque duo.
         Nam ea appareat tincidunt, option euismod constituam et mea.
-        Modus disputando ad usu, in pri nominati corrumpit.
+        Modus disputando ad usu, in pri <u>nominati corrumpit</u>.
         Eripuit postulant vim cu, pri inermis adipiscing ea.
         No autem tincidunt qui. Mel ea facete adversarium intellegebat, primis urbanitas vis ei. </p>
 
@@ -43,9 +46,11 @@
     <!-- Task 4: Picture. Change the size of the picture so that it fits the page better.
     (The picture is stored in the _static folder in the workshop directory, under the welcome folder.) -->
 
-    <img src="{% static "welcome/EUI.png" %}" style="width:5cm;height:600px;"/>
+    <img src="{% static "welcome/EUI.png" %}" style="width:5cm;height:3cm;"/>
 
     <h3> Additional information </h3>
+
+
 
     <!-- Task 5: Additional information. You can include other html files using the include Django command and
     adding the appropriate address of the file.
@@ -54,7 +59,7 @@
     (Remember to use the curly brackets and percentage signs) -->
 
     <div class="card" style="background-color:lightblue">
-
+    {% include "welcome/MyPageSubpage.html" %}
     </div>
 
     <h3>Table</h3>
@@ -76,6 +81,12 @@
       <td>Start with "<" ">" and end with "<"+"/" ">" </td>
     <td>?</td>
   </tr>
+
+  <tr>
+      <td>JavaScript</td>
+      <td>...</td>
+      <td>Dynamic content</td>
+  </tr>
 </table>
 
     <h3>Forms </h3>
@@ -84,10 +95,16 @@
     <div>
         <h4>How old are you?</h4>
     {% formfield player.age %}
+    {% formfield player.name %}
+
+
     </div>
 
     <h3>Buttons</h3>
-    <!-- Task 8: Next button:
+
+    {% next_button %}
+    <!-- Task 8: Next button
+
     You can submit the page by pressing enter, but you can also create a button "next" that submits the page and
     moves the user to the next one. ("Submit" has the special meaning of also saving the data on the database.)
 
@@ -110,7 +127,7 @@
 
     3. The button text inside can be customized to whichever language you want it to be in.-->
 
-       <button disabled class="">Successivo</button>
+       <button class = "otree-btn-next btn btn-primary next-button otree-next-button">Successivo</button>
 
     <!-- There is a huge library of ready made class families etc., called bootstrap.
     Find more from https://www.w3schools.com/bootstrap/default.asp. -->

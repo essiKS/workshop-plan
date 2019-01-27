@@ -23,14 +23,10 @@ Your app description
 # Constants are set once when the session is started. They are common to all participants and may not be changed later.
 class Constants(BaseConstants):
     name_in_url = 'lesson2'
-    players_per_group = None
+    players_per_group = 3
     num_rounds = 1
-
-# Task 1: Set up the endowment and multiplication coefficient.
-# The endowment is 10 points and the multiplication coefficient is 2.
-# You can also add to the number of rounds.
-# Notice, we need to also adjust the number of participants per group (3).
-# If you want, you can update the information on the Instructions.html so that the file directly reads these constants.
+    endowment = 10
+    multiplication_coefficient = 2
 
 # Task 2: Make a comprehension test for the players (under the player model).
 # You can ask for example:
@@ -38,13 +34,50 @@ class Constants(BaseConstants):
 # - what is the maximum contribution that a player can make?
 # - what is the multiplication coefficient?
 # 1. Add the variables under the Player class:
-# - f. ex. (indented) maximum_contribution = models.PositiveIntegerField(
-#                                   label="What is the maximum contribution that a player can make?")
+# - f. ex. (indented)
 # - you can fix the answers such that only correct answer will do, using the max and min similar to label
 # 2. Add the appropriate form model and form fields under the instructions page in pages.py
 # - form_model = 'player'
 # - form_fields = ['maximum_contribution]
 # 3. Add Django formfields command to the Decision.html
+
+
+
+
+
+
+# If you need to change some variable for the group, set it under the subsession.
+# These variables are shared by all groups and players.
+class Subsession(BaseSubsession):
+    pass
+
+
+# Group model is a great place to store any variables that should be accessed by any group member.
+class Group(BaseGroup):
+    contribution1 = models.PositiveIntegerField(label="How much do you want to contribute?", max=Constants.endowment)
+    contribution2 = models.PositiveIntegerField(label="How much do you want to contribute?", max=Constants.endowment)
+    contribution3 = models.PositiveIntegerField(label="How much do you want to contribute?", max=Constants.endowment)
+
+    def set_payoffs(self):
+        for p in self.get_players():
+            if p.id_in_group == 1:
+                p.payoff = Constants.endowment - self.contribution1 + 2 * (self.contribution1 + self.contribution2 + self.contribution3)
+            elif p.id_in_group == 2:
+                p.payoff = Constants.endowment - self.contribution2 + 2 * (self.contribution1 + self.contribution2 + self.contribution3)
+            elif p.id_in_group == 3:
+                p.payoff = Constants.endowment - self.contribution3 + 2 * (self.contribution1 + self.contribution2 + self.contribution3)
+
+
+# Task 4: Payoff function:
+# Define a set payoff function under the group model and trigger this after all players have arrived on the wait page
+# 1. Add the following function under the group model (notice the indentations)!
+
+
+
+# 2. Trigger the function by placing the line under the wait page, after all players arrive function
+# (indented) self.group.set_payoffs()
+#
+
 
 
 # Task 3: Make the decisions:
@@ -68,37 +101,11 @@ class Constants(BaseConstants):
 # 3. Add Django formfields command to the Decision.html
 
 
-# Task 4: Payoff function:
-# Define a set payoff function under the group model and trigger this after all players have arrived on the wait page
-# 1. Add the following function under the group model (notice the indentations)!
-
-#    def set_payoffs(self):
-#        for p in self.get_players():
-#            if p.id_in_group == 1:
-#                p.payoff = Constants.endowment - self.contribution1 + \
-#                           2 * (self.contribution1 + self.contribution2 + self.contribution3)
-#            elif p.id_in_group == 2:
-#                etc - continue to close all the possible cases...
-
-# 2. Trigger the function by placing the line under the wait page, after all players arrive function
-# (indented) self.group.set_payoffs()
-#
-
-
-# If you need to change some variable for the group, set it under the subsession.
-# These variables are shared by all groups and players.
-class Subsession(BaseSubsession):
-    pass
-
-
-# Group model is a great place to store any variables that should be accessed by any group member.
-class Group(BaseGroup):
-    pass
 
 
 # Individual decisions that concern only the individual are fit to go under the player model.
 # Note that there is another similar class called Participant, that is more fundamental to oTree and more hidden.
 # We discuss the difference between Player and Participant in the slides.
 class Player(BasePlayer):
-    pass
+    maximum_contribution = models.PositiveIntegerField(label="What is the maximum contribution that a player can make?", max= 10, min = 10)
 

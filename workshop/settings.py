@@ -30,6 +30,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 3,
         'app_sequence': ['lesson2'],
     },
+    {
+        'name': 'feedback',
+        'display_name': "First day survey",
+        'num_demo_participants': 1,
+        'app_sequence': ['feedback'],
+    },
 ]
 
 

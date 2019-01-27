@@ -14,7 +14,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'lesson1'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 2
     endowment = 10
 
 
@@ -23,7 +23,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    trust = models.PositiveIntegerField(max=Constants.endowment)
+    trust = models.PositiveIntegerField(default=10, max=Constants.endowment)
     reciprocity = models.PositiveIntegerField()
 
     def set_payoffs(self):
