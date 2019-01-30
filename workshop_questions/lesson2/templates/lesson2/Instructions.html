@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions for a public good game
+{% endblock %}
+
+{% block content %}
+
+    <p> You are a player in a group of 3 players.
+        You have each been given an endowment of X points.
+        {# Add here the information about the endowment #}
+        {# Tip: if you set it up under the Constants, #}
+        {# and under the name endowment, you can access it with: {{ Constants.endowment }}#}
+        You can invest any amount of these points to the common pool.
+        Each point invested will be doubled by the experimenter.
+        The funds in the pool will then be divided equally by the group members.
+        </p>
+
+    {% next_button %}
+
+{% endblock %}

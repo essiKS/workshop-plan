@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+
+    <h3> Trust game </h3>
+
+    <p> You are participating in a trust game. Your role is that of the <b>{{ player.role }}</b>. <br>
+        You are paired with another player that has the role of
+    {% if player.role == "trustor" %}trustee{% else %}trustor{% endif %}. </p>
+
+    <p> In the beginning of this game, the trustor receives an endowment of {{ Constants.endowment }} points. <br>
+        First, the trustor decides how many of these points to send to the trustee. <br>
+        Each point sent will then be tripled by the experimenter and send to the trustee.</p>
+
+    <p> The trustee will be informed how many points has been sent by the trustor. <br>
+        The points are multiplied by the experimenter and out of these points, <br>
+        the trustee must decide how many to send back to the trustor. </p>
+
+    <p> After the decisions, the game ends and both players will learn the outcome of the game. </p>
+
+    {% next_button %}
+
+{% endblock %}
