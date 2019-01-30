@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Django content and if sentences
+{% endblock %}
+
+{% block content %}
+
+
+<!--Task 10: With double curly brackets you can access information in the database.
+Add information "You have reported your age to be" and then add player.age data, after the hello. -->
+    <p> Hello {{ player.name }}! </p>
+
+    Reported age  {{ player.age }}
+
+
+<!-- Task 11: if sentences in Django
+Make this page such that it shows different content depending on the reported age.
+Use the django's if sentence and then a mathematical expression for the variable player.age
+Then you can use an else-sentence for alternative content, in case the condition is not satisfied.
+To close the if sentence, you need the the command endif. -->
+
+    {% if player.age > 25 %}
+        Hey!
+
+    {% elif player.age < 5 %}
+        Age
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
+
+

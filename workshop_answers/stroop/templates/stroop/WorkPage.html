@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Stroop test
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div> What is the color you see?
+
+    <h1 id="stroop" class="question" style ='color:{{ player.task_color }}'> {{ player.task_text }} </h1>
+
+     {% for color in Constants.choices %}
+         <button class="answer btn btn-success" data-color={{ color }} type="button"
+                 style="background-color:lightgoldenrodyellow; color: {{ color }}"><b>{{ color }}</b></button>
+    {% endfor %}
+
+    </div>
+
+    {# The following two spans show n. total and  correct tasks  #}
+    <p> Tasks attempted so far: <span id="num_tasks_total">{{ player.num_tasks_total }}</span></p>
+    <p> Tasks correct so far: <span id="num_tasks_correct"> {{ player.num_tasks_correct }}</span></p>
+{% endblock %}
+{% block scripts %}
+    {#  Here we include javascript block where we connect via websockets to oTree server  #}
+    {% include 'stroop/includes/channel-js.html' %}
+{% endblock %}
+
+

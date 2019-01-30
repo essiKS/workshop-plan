@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Maths task
+{% endblock %}
+
+{% block content %}
+    <div>What is the sum of the numbers below?</div>
+    {#  in the following heading we show the task body (integer to subtract from 100 <-- OLD VERSION  #}
+<h1 class="question"><span id ="task1">{{ player.task_body1 }}</span> + <span id ="task2">{{ player.task_body2 }}</span></h1>
+    <div class="form-row align-items-center">
+        {# The following input is where the answer should be inserted   #}
+        <input type="number" id="answer" class="form-control">
+        {#  button that sends answers back to server #}
+        <button class="answer btn btn-success" type="button">Answer</button>
+    </div>
+    {# The following two spans show n. total and  correct tasks  #}
+    <p> Tasks attempted so far: <span id="num_tasks_total">{{ player.num_tasks_total }}</span></p>
+    <p> Tasks correct so far: <span id="num_tasks_correct"> {{ player.num_tasks_correct }}</span></p>
+{% endblock %}
+{% block scripts %}
+    {#  Here we include javascript block where we connect via websockets to oTree server  #}
+    {% include 'minimum/includes/channel-js.html' %}
+{% endblock %}
+
+
