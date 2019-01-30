@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block content %}
+
+    <form>
+    <p>Write a message: </p>
+    <input type="text" id="text">
+    </form>
+
+    <button id="send" type="button">Send</button>
+
+    <h3>Latest messages</h3>
+
+    <div id="message_space">
+{% if messages %}
+            {% for one in messages %}
+                <span>{{ one }} <br> </span>
+            {% endfor %}
+        {% else %}
+            <b>No messages yet.<br></b>
+{% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {% include 'chat/includes/channel-js.html' %}
+{% endblock %}

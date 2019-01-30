@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {% if subsession.color == "blue" %}
+    Hello!{% endif %}
+    Instructions for a public good game
+{% endblock %}
+
+{% block content %}
+
+    <p> You are a player in a group of 3 players.
+        You have each been given an endowment of {{ Constants.endowment }} points.
+        You can invest any amount of these points to the common pool.
+        Each point invested will be doubled by the experimenter.
+        The funds in the pool will then be divided equally by the group members.
+        </p>
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

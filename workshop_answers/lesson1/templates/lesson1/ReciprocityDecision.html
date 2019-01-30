@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Reciprocity decision {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p> Trustor sent you {{ group.trust }} points. This is multiplied to {{ multiplied }} points. </p>
+
+{%  formfield group.reciprocity label="How many points do you send back to the trustor?" %}
+
+    {% next_button %}
+{% endblock %}
